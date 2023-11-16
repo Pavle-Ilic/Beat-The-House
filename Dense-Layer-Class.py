@@ -7,3 +7,5 @@ class Dense():
         pass
     def backward(self, output_gradient, learning_rate):
         pass
+
+    fhfhfhfhfh
