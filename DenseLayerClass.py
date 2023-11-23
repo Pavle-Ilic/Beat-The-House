@@ -1,5 +1,6 @@
 import numpy as np
 
+#activations functions will not be called here
 class Dense():
     def __init__(self, input_dim, output_dim):
         pass
