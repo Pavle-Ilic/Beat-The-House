@@ -14,8 +14,12 @@ class Network():
     def copyNetwork(self):
         pass
 
-    def predict(self):
-        pass
+    def predict(self, input):
+        output = input
+        for i in range(len(self) - 1):
+            output = relu(self[i].forward(output))
+        output = linear(self[-1].forward(output))
+        return output
 
     def fit(self):
         pass
