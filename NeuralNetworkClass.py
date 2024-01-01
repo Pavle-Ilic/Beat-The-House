@@ -5,7 +5,7 @@ import numpy as np
 
 class Network():
     def __init__(self, learning_rate):
-        pass
+        self.network = []
 
     def add(self, layer):
         pass
@@ -16,9 +16,9 @@ class Network():
 
     def predict(self, input):
         output = input
-        for i in range(len(self) - 1):
-            output = relu(self[i].forward(output))
-        output = linear(self[-1].forward(output))
+        for i in range(len(self.network) - 1):
+            output = relu(self.network[i].forward(output))
+        output = linear(self.network[-1].forward(output))
         return output
 
     def fit(self):
