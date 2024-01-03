@@ -16,8 +16,10 @@ class Dense():
 
     def forward(self, input):
 
+        self.input = input
+
         # Forward = weights . input + bias (matrix multiplication)
-        return np.dot(self.weights, input) + self.bias
+        return np.dot(self.weights, self.input) + self.bias
 
 
 
