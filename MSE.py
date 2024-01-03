@@ -1,7 +1,7 @@
 import numpy as np
 
 # Mean squared error desired output versus the actual output of the network
-def mse(y_actual, y_prediction, derivativeFlag):
+def mse(y_actual, y_prediction, derivativeFlag=0):
     
     # If we are not using the derivate for Y, we can use the standard MSE formula
     if(derivativeFlag == 0):
