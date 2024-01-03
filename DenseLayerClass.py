@@ -10,6 +10,7 @@ class Dense():
         self.weights = gaussianRng(size=(input_dim, output_dim))
 
         # Generate a Gaussian randomly generated bias column vector
+        gaussianRng = np.random.Generator.standard_normal()
         self.bias = gaussianRng(size=(input_dim, 1))
 
 
