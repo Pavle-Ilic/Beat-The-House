@@ -12,8 +12,8 @@ class Network():
         if self.network:
             prev_layer = self.network[-1]
             #get dimension of previous layer and new layer
-            prev_layer_output_dim = prev_layer.weights.shape[1]
-            new_layer_input_dim = layer.weights.shape[0]
+            prev_layer_output_dim = prev_layer.weights.shape[0]
+            new_layer_input_dim = layer.weights.shape[1]
 
             #checking if dimensions match
             if prev_layer_output_dim != new_layer_input_dim:
@@ -26,7 +26,7 @@ class Network():
         copied_network = Network(self.learning_rate)
         for layer in self.network:
             copied_layer = copy.deepcopy(layer)
-            copied_network.network.append(copied_layer)
+            copied_network.add(copied_layer) 
         return copied_network
 
     def predict(self, input):
