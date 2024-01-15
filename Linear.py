@@ -1,4 +1,4 @@
-def linear():
-    pass
+def linear(x):
+    return x
 def linearPrime():
-    pass
+    return 1
