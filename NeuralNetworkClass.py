@@ -1,12 +1,14 @@
 from ReLu import relu, reluPrime
 from MSE import mse, msePrime
 from Linear import linear, linearPrime
+from DenseLayerClass import Dense
 import numpy as np
 import copy
 
 class Network():
     def __init__(self, learning_rate):
         self.network = []
+        self.learning_rate = learning_rate
 
     def add(self, layer):
         if self.network:
@@ -36,8 +38,19 @@ class Network():
         output = linear(self.network[-1].forward(output))
         return output
 
-    def fit(self):
-        pass
+    def fit(self, episodes, x_data, y_data, loss):
+        for count in range(episodes):
+            error = 0
+            for x, y in zip(x_data, y_data):
+                output = self.predict(x) # forward prop
+
+                error += mse(y, output) # error, wip
+
+                grad = msePrime(y, output) # backward prop
+                for layer in reversed(self): # wip
+                    grad = layer.backward(grad, self.learning_rate)
+            
+            error /= len(x_data) # divde error by the length of x
 
     def save(self):
         pass

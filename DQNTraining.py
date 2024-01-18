@@ -1,8 +1,8 @@
 #import libraries as needed
 from NeuralNetworkClass import Network
 from DenseLayerClass import Dense
+from collections import deque
 import numpy as np
-
 
 class DQN():
     def __init__(self, observation_size, action_size, discount_factor, n_episodes, start_epsilon, end_epsilon, epsilon_decay, batch_size):
