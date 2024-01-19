@@ -47,8 +47,9 @@ class Network():
                 error += mse(y, output) # error, wip
 
                 grad = msePrime(y, output) # backward prop
-                for layer in reversed(self): # wip
-                    grad = layer.backward(grad, self.learning_rate)
+                for layer in self.network:
+                    grad = reluPrime(self.network[layer].backward(grad))
+                grad = linearPrime(self.network[-1].backward(grad))
             
             error /= len(x_data) # divde error by the length of x
 
