@@ -38,7 +38,7 @@ class Network():
         output = linear(self.network[-1].forward(output))
         return output
 
-    def fit(self, episodes, x_data, y_data, loss):
+    def fit(self, episodes, x_data, y_data):
         for count in range(episodes):
             error = 0
             for x, y in zip(x_data, y_data):
