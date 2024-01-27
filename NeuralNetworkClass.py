@@ -46,12 +46,11 @@ class Network():
 
                 error += mse(y, output) # error
 
-                grad = mse(y, output, 1) # backward
-                grad = linearPrime(self.network[-1].backward(grad))
+                grad = linearPrime(self.network[-1].backward(grad)) # backward
                 for i in range(len(self.network)-2, -1, -1):
                     grad = reluPrime(self.network[i].backward(grad))
             
-            error /= len(x_data) 
+            error /= len(x_data)
 
     def save(self):
         pass
