@@ -44,14 +44,15 @@ class Network():
             for x, y in zip(x_data, y_data):
                 output = self.predict(x) # forward prop
 
-                error += mse(y, output) # error, wip
+                error += mse(y, output) # error
 
-                grad = msePrime(y, output) # backward prop
-                for layer in self.network:
-                    grad = reluPrime(self.network[layer].backward(grad))
+                grad = msePrime(y, output) # backward
+
                 grad = linearPrime(self.network[-1].backward(grad))
+                for i in range(len(self.network)-2, -1, -1):
+                    grad = reluPrime(self.network[i].backward(grad))
             
-            error /= len(x_data) # divde error by the length of x
+            error /= len(x_data) # divide error by the length of x
 
     def save(self):
         pass
