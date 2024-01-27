@@ -42,17 +42,16 @@ class Network():
         for count in range(episodes):
             error = 0
             for x, y in zip(x_data, y_data):
-                output = self.predict(x) # forward prop
+                output = self.predict(x) # forward
 
                 error += mse(y, output) # error
 
-                grad = msePrime(y, output) # backward
-
+                grad = mse(y, output, 1) # backward
                 grad = linearPrime(self.network[-1].backward(grad))
                 for i in range(len(self.network)-2, -1, -1):
                     grad = reluPrime(self.network[i].backward(grad))
             
-            error /= len(x_data) # divide error by the length of x
+            error /= len(x_data) 
 
     def save(self):
         pass
