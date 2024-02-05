@@ -1,6 +1,8 @@
 from ReLu import relu, reluPrime
 from MSE import mse, msePrime
 from Linear import linear, linearPrime
+import pandas as pd
+import torch
 from DenseLayerClass import Dense
 import numpy as np
 import copy
@@ -52,9 +54,10 @@ class Network():
             
             error /= len(x_data)
 
-    def save(self):
-        pass
+    def save(PATH, model):
+        torch.save(model.state_dict(), PATH)
 
-    def load(self):
-        pass
+    def load(PATH, model):
+        encoder_weights = torch.load(PATH)  # Load the model weights
+        model.load_state_dict(encoder_weights)  # Load the weights into the model
 
