@@ -38,7 +38,12 @@ class DQN():
     
     #epsilon greedy approach for an action
     def get_action(self, curr_state):
-        pass
+        if np.random.rand() < self.epsilon:
+            return np.random.randint(0, self.action_size)
+        else:
+            curr_state = np.expand_dims(curr_state, axis=0)
+            q_values = self.q_network.predict(curr_state)
+            return np.argmax(q_values)
 
     def choose_action(self, curr_state):
         pass
