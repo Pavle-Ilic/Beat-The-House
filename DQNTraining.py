@@ -46,7 +46,8 @@ class DQN():
             return np.argmax(q_values)
 
     def choose_action(self, curr_state):
-        pass
+        predicted_action = self.q_network.predict(curr_state)
+        return np.argmax(predicted_action[0]) #obtain action w/highest q value
     
     #function to decay epsilon, call it at the end of train
     def decay_epsilon(self):
@@ -58,7 +59,7 @@ class DQN():
 
     #function to update our target network with the weights of the q network
     def update_target(self):
-        pass
+        self.target_network.set_weights(self.q_network.get_weights())
 
     #methods to save model
     def save_model(self, file_name):
